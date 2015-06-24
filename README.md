@@ -41,7 +41,7 @@ By default, layout types reference the views `superview`. To create a constraint
 view1.applyLayout(.Left() == .Right(view2) + 5, .Size() == .Size(view2))
 ```
 
-## Constraint Maniuplation
+## Constraint Manipulation
 
 The `applyLayout` method returns an array of the generated `NSLayoutConstraint` objects, which can be used to later to easily disable or modify the generated constraints.
 
