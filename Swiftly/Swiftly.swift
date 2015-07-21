@@ -87,276 +87,276 @@ public struct Swiftly {
     /**
     A combined layout representing all sides of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Flush(view: UIView? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right, .Top, .Bottom], fromItem: view)
+    public static func Flush(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Left, .Right, .Top, .Bottom], fromItem: item)
     }
     /**
     A combined layout representing the left and right sides of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Horizontal(view: UIView? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right], fromItem: view)
+    public static func Horizontal(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Left, .Right], fromItem: item)
     }
     /**
     A combined layout representing the top and bottom sides of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Vertical(view: UIView? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Top, .Bottom], fromItem: view)
+    public static func Vertical(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Top, .Bottom], fromItem: item)
     }
     /**
     A combined layout representing the center along the x-axis and y-axis of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Center(view: UIView? = nil) -> Swiftly {
-        return Swiftly(attributes: [.CenterX, .CenterY], fromItem: view)
+    public static func Center(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.CenterX, .CenterY], fromItem: item)
     }
     /**
     A combined layout representing the height and width of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Size(view: UIView? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Height, .Width], fromItem: view)
+    public static func Size(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Height, .Width], fromItem: item)
     }
     /**
     A layout representing the left side of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Left(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Left, fromItem: view)
+    public static func Left(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Left, fromItem: item)
     }
     /**
     A layout representing the right side of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Right(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Right, fromItem: view)
+    public static func Right(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Right, fromItem: item)
     }
     /**
     A layout representing the top side of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Top(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Top, fromItem: view)
+    public static func Top(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Top, fromItem: item)
     }
     /**
     A layout representing the bottom side of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Bottom(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Bottom, fromItem: view)
+    public static func Bottom(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Bottom, fromItem: item)
     }
     /**
     A layout representing the leading edge of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Leading(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Leading, fromItem: view)
+    public static func Leading(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Leading, fromItem: item)
     }
     /**
     A layout representing the trailing edge of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Trailing(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Trailing, fromItem: view)
+    public static func Trailing(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Trailing, fromItem: item)
     }
     /**
     A layout representing the height of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Height(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Height, fromItem: view)
+    public static func Height(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Height, fromItem: item)
     }
     /**
     A layout representing the width of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Width(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Width, fromItem: view)
+    public static func Width(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Width, fromItem: item)
     }
     /**
     A layout representing the center along the x-axis of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func CenterX(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.CenterX, fromItem: view)
+    public static func CenterX(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.CenterX, fromItem: item)
     }
     /**
     A layout representing the center along the y-axis of a view's alignment rectangle.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func CenterY(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.CenterY, fromItem: view)
+    public static func CenterY(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.CenterY, fromItem: item)
     }
     /**
     A layout representing the baseline of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func Baseline(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.Baseline, fromItem: view)
+    public static func Baseline(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.Baseline, fromItem: item)
     }
 
     /**
     A layout representing the top most baseline of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func FirstBaseline(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.FirstBaseline, fromItem: view)
+    public static func FirstBaseline(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.FirstBaseline, fromItem: item)
     }
 
     /**
     A layout representing the left margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func LeftMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.LeftMargin, fromItem: view)
+    public static func LeftMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.LeftMargin, fromItem: item)
     }
     /**
     A layout representing the right margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func RightMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.RightMargin, fromItem: view)
+    public static func RightMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.RightMargin, fromItem: item)
     }
     /**
     A layout representing the top margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func TopMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.TopMargin, fromItem: view)
+    public static func TopMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.TopMargin, fromItem: item)
     }
     /**
     A layout representing the bottom margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func BottomMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.BottomMargin, fromItem: view)
+    public static func BottomMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.BottomMargin, fromItem: item)
     }
     /**
     A layout representing the leading margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func LeadingMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.LeadingMargin, fromItem: view)
+    public static func LeadingMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.LeadingMargin, fromItem: item)
     }
     /**
     A layout representing the trailing margin of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func TrailingMargin(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.TrailingMargin, fromItem: view)
+    public static func TrailingMargin(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.TrailingMargin, fromItem: item)
     }
     /**
     A layout representing the center along the x-axis between the left and right margins of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func CenterXWithinMargins(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.CenterXWithinMargins, fromItem: view)
+    public static func CenterXWithinMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.CenterXWithinMargins, fromItem: item)
     }
     /**
     A layout representing the center along the y-axis between the top and bottom margins of a view.
 
-    - parameter view: The view that the property representing. If nil, the layout is relative to the superview.
+    - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
 
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced=8.0)
-    public static func CenterYWithinMargins(view: UIView? = nil) -> Swiftly {
-        return Swiftly(.CenterYWithinMargins, fromItem: view)
+    public static func CenterYWithinMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(.CenterYWithinMargins, fromItem: item)
     }
 
     private let attribute: NSLayoutAttribute?
     private let attributes: [NSLayoutAttribute]?
-    private var fromItem: UIView?
+    private var fromItem: AnyObject?
     private var relatedBy: NSLayoutRelation?
     private var otherAttribute: NSLayoutAttribute?
     private var otherAttributes: [NSLayoutAttribute]?
     private var multiplier: CGFloat
     private var constant: CGFloat
-    private var toItem: UIView?
+    private var toItem: AnyObject?
 
-    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: UIView? = nil, toItem ti: UIView? = nil, otherAttribute oa: NSLayoutAttribute? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
+    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
         attributes = atts
         relatedBy = r
@@ -376,7 +376,7 @@ Assign a property of a view equal to that property on another view. Useful for t
 
 - returns: A Swiftly object representing the desired constraint
 */
-public func ==(left: Swiftly, right: UIView) -> Swiftly {
+public func ==(left: Swiftly, right: AnyObject) -> Swiftly {
     var result = left
     result.toItem = right
     return result
