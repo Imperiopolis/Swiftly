@@ -454,6 +454,23 @@ public func >=(left: Swiftly, right: Swiftly) -> Swiftly {
 }
 
 /**
+Assign a layout property greater than or equal to a constant.
+
+- parameter left:  Layout property to assign
+- parameter right: Constant to be greater than or equal to
+
+- returns: A Swiftly object representing the desired constraint
+*/
+public func >=(left: Swiftly, right: CGFloat) -> Swiftly {
+    var result = left
+    result.constant = right
+    result.otherAttribute = .NotAnAttribute
+    result.relatedBy = .GreaterThanOrEqual
+    result.multiplier = 1
+    return result
+}
+
+/**
 Assign a layout property less than or equal to another property. Useful for things such as creating a spacer view that should have a width less than or equal to a view.
 
 - parameter left:  Layout property to assign
@@ -478,6 +495,23 @@ public func <=(left: Swiftly, right: Swiftly) -> Swiftly {
     if right.multiplier != 0 {
         result.multiplier = right.multiplier
     }
+    return result
+}
+
+/**
+Assign a layout property less than or equal to a constant.
+
+- parameter left:  Layout property to assign
+- parameter right: The constant to be less than or equal to
+
+- returns: A Swiftly object representing the desired constraint
+*/
+public func <=(left: Swiftly, right: CGFloat) -> Swiftly {
+    var result = left
+    result.constant = right
+    result.otherAttribute = .NotAnAttribute
+    result.relatedBy = .LessThanOrEqual
+    result.multiplier = 1
     return result
 }
 
