@@ -8,6 +8,61 @@
 
 import UIKit
 
+public extension Array where Element : UIView {
+
+    /**
+    Apply an array of Swiftly objects to an array of views. This is appended to any existing constraints.
+
+    - parameter layoutArray: The layout(s) to apply.
+
+    - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+    */
+    internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+
+        for view in self {
+            constraints += view.applyLayout(layoutArray: layoutArray)
+        }
+
+        return constraints
+    }
+
+    /**
+    Apply an array of Swiftly objects to an array of views. The constraints are not applied to the first view in the array (since it has no previous item). This is appended to any existing constraints.
+
+    - parameter callback: A closure used to define the constraints. A previousView argument is passed to allow for distributing views.
+
+    - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+    */
+    func applyLayoutWithPreviousView(callback: (previousView: UIView) -> ([Swiftly])) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+
+        var previousView: UIView?
+        for view in self {
+            if let previousView = previousView {
+                let swiftly = callback(previousView: previousView)
+                constraints += view.applyLayout(layoutArray: swiftly)
+            }
+
+            previousView = view
+        }
+
+        return constraints
+    }
+
+    /**
+    Apply a variadic list of Swiftly objects to an array of views. This is appended to any existing constraints.
+
+    - parameter layout: The layout(s) to apply.
+
+    - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+    */
+    func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
+        return self.applyLayout(layoutArray: layout)
+    }
+
+}
+
 public extension UIView {
 
     /**
