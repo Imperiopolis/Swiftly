@@ -21,7 +21,9 @@ view.applyLayout(.CenterX(), .Vertical(), .Width() * 0.5)
 Swiftly is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-    pod "Swiftly"
+```ruby
+pod "Swiftly"
+```
 
 ## Custom Operators
 

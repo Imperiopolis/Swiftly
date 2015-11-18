@@ -1,12 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "Swiftly"
-  s.version          = "0.0.1"
-  s.summary          = "A simple Swift graphing library."
+  s.version          = "0.0.2"
+  s.summary          = "Swiftly generate autolayout constraints."
   s.description      = <<-DESC
-                        A simple Swift graphing library.
-
-                        Currently, only supports basic line graphs.
-                       DESC
+Swiftly generate autolayout constraints and interact with them with all of Apple's built in functions.
+                    DESC
   s.homepage         = "https://github.com/imperiopolis/Swiftly"
   s.license          = 'MIT'
   s.author           = { "Imperiopolis" => "me@trappdesign.net" }
