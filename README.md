@@ -8,11 +8,20 @@ Swiftly generate autolayout constraints.
 
 ## Usage
 
+To run the example project, simply run `pod try swiftly`. Alternatively, you can clone the repo and run the project in the example directory.
+
 All views respond to the `applyLayout` method which takes a variadic list of `Swiftly` objects. Convenience initializers are available which pair with all of Apple's `NSLayoutAttribute` types. Common combinatorial layout types `Flush`, `Vertical`, `Horizontal`, `Center`, and `Size` are also available.
 
 ```swift
 view.applyLayout(.CenterX(), .Vertical(), .Width() * 0.5)
 ```
+
+## Installation
+
+Swiftly is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+    pod "Swiftly"
 
 ## Custom Operators
 
