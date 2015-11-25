@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Swiftly"
-  s.version          = "0.0.2"
+  s.version          = "0.0.3"
   s.summary          = "Swiftly generate autolayout constraints."
   s.description      = <<-DESC
 Swiftly generate autolayout constraints and interact with them with all of Apple's built in functions.

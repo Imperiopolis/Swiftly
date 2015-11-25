@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DA9AA831B3A0CD80084835F /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9AA821B3A0CD80084835F /* ExampleViewController.swift */; };
-		A8BB7AC0E356907F2B36D13D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA3A014976F265BB0DE9865 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A8BB7AC0E356907F2B36D13D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA3A014976F265BB0DE9865 /* Pods.framework */; };
 		D8093AC51AB6551800282415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8093AC41AB6551800282415 /* AppDelegate.swift */; };
 		D8093ACC1AB6551800282415 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8093ACB1AB6551800282415 /* Images.xcassets */; };
 		D8093ACF1AB6551800282415 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8093ACD1AB6551800282415 /* LaunchScreen.xib */; };
@@ -122,6 +122,7 @@
 		D8093AB51AB6543A00282415 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				TargetAttributes = {
 					D8093ABE1AB6551800282415 = {

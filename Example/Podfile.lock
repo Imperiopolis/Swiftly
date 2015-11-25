@@ -1,5 +1,5 @@
 PODS:
-  - Swiftly (0.0.1)
+  - Swiftly (0.0.3)
 
 DEPENDENCIES:
   - Swiftly (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Swiftly: ca4540acff95e2fa9e6ca028b7f765deb2efb78e
+  Swiftly: fa74061bb4757666a3dbd675d3d76b60b762acb6
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0
