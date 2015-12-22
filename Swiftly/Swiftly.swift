@@ -108,14 +108,20 @@ public extension UIView {
                 // toItem should be nil when setting a fixed size
                 let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? self.superview!)
 
-                constraints.append(NSLayoutConstraint(
+                let constraint = NSLayoutConstraint(
                     item: l.fromItem ?? self,
                     attribute: attr,
                     relatedBy: l.relatedBy ?? .Equal,
                     toItem: toItem,
                     attribute: otherAttr,
                     multiplier: l.multiplier,
-                    constant: l.constant))
+                    constant: l.constant)
+
+                if let priority = l.priority {
+                    constraint.priority = priority
+                }
+
+                constraints.append(constraint)
             }
         }
 
@@ -400,6 +406,19 @@ public struct Swiftly {
     public static func CenterYWithinMargins(item: AnyObject? = nil) -> Swiftly {
         return Swiftly(.CenterYWithinMargins, fromItem: item)
     }
+    /**
+     A layout representing the given swiftly object but with the given priority set.
+
+     - parameter priority: The priority.
+     - parameter swiftly:  The Switfly object to modify.
+
+     - returns: A new Swiftly object, the same as passed in, but with the given priority set.
+     */
+    public static func WithPriority(priority: UILayoutPriority, _ swiftly: Swiftly) -> Swiftly {
+        var s = swiftly
+        s.priority = priority
+        return s
+    }
 
     private let attribute: NSLayoutAttribute?
     private let attributes: [NSLayoutAttribute]?
@@ -410,6 +429,7 @@ public struct Swiftly {
     private var multiplier: CGFloat
     private var constant: CGFloat
     private var toItem: AnyObject?
+    private var priority: UILayoutPriority?
 
     private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
