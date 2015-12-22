@@ -33,6 +33,14 @@ Operators can be used on `Swiftly` objects to produce modified layouts. The `==`
 view.applyLayout(.CenterX(), .Top() + 20, .Width() * 0.5, .Height() == 200)
 ```
 
+## Setting Priority
+
+The priority of `Swiftly` objects may be configured.
+
+```swift
+view.applyLayout(.WithPriority(500, .CenterY()))
+```
+
 ## View Relationships
 
 By default, layout types reference the views `superview`. To create a constraint relative to a sibling view pass that view as a paramter.
