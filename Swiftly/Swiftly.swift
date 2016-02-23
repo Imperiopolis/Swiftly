@@ -406,19 +406,6 @@ public struct Swiftly {
     public static func CenterYWithinMargins(item: AnyObject? = nil) -> Swiftly {
         return Swiftly(.CenterYWithinMargins, fromItem: item)
     }
-    /**
-     A layout representing the given swiftly object but with the given priority set.
-
-     - parameter priority: The priority.
-     - parameter swiftly:  The Switfly object to modify.
-
-     - returns: A new Swiftly object, the same as passed in, but with the given priority set.
-     */
-    public static func WithPriority(priority: UILayoutPriority, _ swiftly: Swiftly) -> Swiftly {
-        var s = swiftly
-        s.priority = priority
-        return s
-    }
 
     private let attribute: NSLayoutAttribute?
     private let attributes: [NSLayoutAttribute]?
@@ -644,4 +631,22 @@ public func /(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.multiplier = 1 / right
     return result
+}
+
+infix operator ~= {
+    precedence 0
+}
+
+/**
+Assign the priority of a property.
+
+ - parameter priority: Layout property to assign
+ - parameter swiftly:  The priority
+
+ - returns: A Swiftly object representing the desired constraint
+ */
+public func ~=(left: Swiftly, right: UILayoutPriority) -> Swiftly {
+    var s = left
+    s.priority = right
+    return s
 }

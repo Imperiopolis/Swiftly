@@ -38,7 +38,7 @@ view.applyLayout(.CenterX(), .Top() + 20, .Width() * 0.5, .Height() == 200)
 The priority of `Swiftly` objects may be configured.
 
 ```swift
-view.applyLayout(.WithPriority(500, .CenterY()))
+view.applyLayout(.CenterY() ~= UILayoutPriorityRequired)
 ```
 
 ## View Relationships
