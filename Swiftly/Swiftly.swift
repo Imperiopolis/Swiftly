@@ -156,6 +156,16 @@ public struct Swiftly {
         return Swiftly(attributes: [.Left, .Right, .Top, .Bottom], fromItem: item)
     }
     /**
+     A combined layout representing all sides of a view's margin alignment rectangle.
+
+     - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
+
+     - returns: A Swiftly object representing the desired layout.
+     */
+    public static func FlushMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.LeftMargin, .RightMargin, .TopMargin, .BottomMargin], fromItem: item)
+    }
+    /**
     A combined layout representing the left and right sides of a view's alignment rectangle.
 
     - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
@@ -166,6 +176,16 @@ public struct Swiftly {
         return Swiftly(attributes: [.Left, .Right], fromItem: item)
     }
     /**
+     A combined layout representing the left and right sides of a view's margin alignment rectangle.
+
+     - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
+
+     - returns: A Swiftly object representing the desired layout.
+     */
+    public static func HorizontalMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.LeftMargin, .RightMargin], fromItem: item)
+    }
+    /**
     A combined layout representing the top and bottom sides of a view's alignment rectangle.
 
     - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
@@ -174,6 +194,16 @@ public struct Swiftly {
     */
     public static func Vertical(item: AnyObject? = nil) -> Swiftly {
         return Swiftly(attributes: [.Top, .Bottom], fromItem: item)
+    }
+    /**
+     A combined layout representing the top and bottom sides of a view's margin alignment rectangle.
+
+     - parameter item: The item that the property is representing. When nil, the layout is relative to the superview.
+
+     - returns: A Swiftly object representing the desired layout.
+     */
+    public static func VerticalMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.TopMargin, .BottomMargin], fromItem: item)
     }
     /**
     A combined layout representing the center along the x-axis and y-axis of a view's alignment rectangle.
