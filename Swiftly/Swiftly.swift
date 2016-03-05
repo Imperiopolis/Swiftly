@@ -73,7 +73,7 @@ public extension UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
-        if self.superview == nil {
+        guard let superview = superview else {
             fatalError("You must assign a superview before applying a layout")
         }
 
@@ -106,7 +106,7 @@ public extension UIView {
 
             for (attr, otherAttr) in zip(attributes, otherAttributes) {
                 // toItem should be nil when setting a fixed size
-                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? self.superview!)
+                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? superview)
 
                 let constraint = NSLayoutConstraint(
                     item: l.fromItem ?? self,
@@ -125,7 +125,7 @@ public extension UIView {
             }
         }
 
-        self.superview!.addConstraints(constraints)
+        superview.addConstraints(constraints)
         return constraints
     }
 
