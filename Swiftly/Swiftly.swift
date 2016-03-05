@@ -63,6 +63,39 @@ public extension Array where Element : UIView {
 
 }
 
+@available(iOS, introduced=9.0)
+public extension Array where Element : UILayoutGuide {
+
+    /**
+     Apply an array of Swiftly objects to an array of layout guides. This is appended to any existing constraints.
+
+     - parameter layoutArray: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+
+        for view in self {
+            constraints += view.applyLayout(layoutArray: layoutArray)
+        }
+
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to an array of layout guides. This is appended to any existing constraints.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
+        return self.applyLayout(layoutArray: layout)
+    }
+    
+}
+
 public extension UIView {
 
     /**
@@ -137,6 +170,83 @@ public extension UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
+        return self.applyLayout(layoutArray: layout)
+    }
+}
+
+@available(iOS, introduced=9.0)
+public extension UILayoutGuide {
+
+    /**
+     Apply an array of Swiftly objects to a layout guide. This is appended to any existing constraints.
+
+     - parameter layoutArray: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        guard let owningView = owningView else {
+            fatalError("You must add this layout guide to a view before applying a layout")
+        }
+
+        var constraints = [NSLayoutConstraint]()
+
+        for l in layoutArray {
+            let attributes: [NSLayoutAttribute]
+            if let attrs = l.attributes {
+                attributes = attrs
+            } else if let attr = l.attribute {
+                attributes = [attr]
+            } else {
+                fatalError("You must define an attribute.")
+            }
+
+            let otherAttributes: [NSLayoutAttribute]
+            if let otherAttrs = l.otherAttributes {
+                otherAttributes = otherAttrs
+            } else if let otherAttr = l.otherAttribute {
+                otherAttributes = [otherAttr]
+            } else if let attr = l.attribute {
+                otherAttributes = [attr]
+            } else if let attrs = l.attributes {
+                otherAttributes = attrs
+            } else {
+                otherAttributes = []
+            }
+
+            for (attr, otherAttr) in zip(attributes, otherAttributes) {
+                // toItem should be nil when setting a fixed size
+                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? owningView)
+
+                let constraint = NSLayoutConstraint(
+                    item: l.fromItem ?? self,
+                    attribute: attr,
+                    relatedBy: l.relatedBy ?? .Equal,
+                    toItem: toItem,
+                    attribute: otherAttr,
+                    multiplier: l.multiplier,
+                    constant: l.constant)
+
+                if let priority = l.priority {
+                    constraint.priority = priority
+                }
+
+                constraints.append(constraint)
+            }
+        }
+
+        owningView.addConstraints(constraints)
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to a view. This is appended to any existing constraints.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func applyLayout(layout: Swiftly ...) -> [NSLayoutConstraint] {
         return self.applyLayout(layoutArray: layout)
     }
 }
