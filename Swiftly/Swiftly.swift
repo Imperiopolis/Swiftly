@@ -594,7 +594,13 @@ Assign a property of a view equal to a constant. Useful for things such as setti
 public func ==(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     return result
 }
 
@@ -665,7 +671,13 @@ Assign a layout property greater than or equal to a constant.
 public func >=(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     result.relatedBy = .GreaterThanOrEqual
     result.multiplier = 1
     return result
@@ -710,7 +722,13 @@ Assign a layout property less than or equal to a constant.
 public func <=(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     result.relatedBy = .LessThanOrEqual
     result.multiplier = 1
     return result
