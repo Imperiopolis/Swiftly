@@ -272,8 +272,8 @@ public struct Swiftly {
 
      - returns: A Swiftly object representing the desired layout.
      */
-    public static func FlushMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.LeftMargin, .RightMargin, .TopMargin, .BottomMargin], fromItem: item)
+    public static func FlushToMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Top, .Left, .Bottom, .Right], otherAttributes: [.TopMargin, .LeftMargin, .BottomMargin, .RightMargin], toItem: item)
     }
     /**
     A combined layout representing the left and right sides of a view's alignment rectangle.
@@ -293,7 +293,7 @@ public struct Swiftly {
      - returns: A Swiftly object representing the desired layout.
      */
     public static func HorizontalMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.LeftMargin, .RightMargin], fromItem: item)
+        return Swiftly(attributes: [.Left, .Right], otherAttributes: [.LeftMargin, .RightMargin], toItem: item)
     }
     /**
     A combined layout representing the top and bottom sides of a view's alignment rectangle.
@@ -313,7 +313,7 @@ public struct Swiftly {
      - returns: A Swiftly object representing the desired layout.
      */
     public static func VerticalMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.TopMargin, .BottomMargin], fromItem: item)
+        return Swiftly(attributes: [.Top, .Bottom], otherAttributes: [.TopMargin, .BottomMargin], toItem: item)
     }
     /**
     A combined layout representing the center along the x-axis and y-axis of a view's alignment rectangle.
