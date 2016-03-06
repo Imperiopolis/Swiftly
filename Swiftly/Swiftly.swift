@@ -58,7 +58,7 @@ public extension Array where Element : UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
     }
 
 }
@@ -91,7 +91,7 @@ public extension Array where Element : UILayoutGuide {
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
     }
     
 }
@@ -110,7 +110,7 @@ public extension UIView {
             fatalError("You must assign a superview before applying a layout")
         }
 
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
 
         var constraints = [NSLayoutConstraint]()
 
@@ -170,7 +170,7 @@ public extension UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
     }
 }
 
@@ -247,7 +247,7 @@ public extension UILayoutGuide {
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
     func applyLayout(layout: Swiftly ...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
     }
 }
 
