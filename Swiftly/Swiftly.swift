@@ -558,13 +558,14 @@ public struct Swiftly {
     private var toItem: AnyObject?
     private var priority: UILayoutPriority?
 
-    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
+    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, otherAttributes otherAtts: [NSLayoutAttribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
         attributes = atts
         relatedBy = r
         fromItem = fi
         toItem = ti
         otherAttribute = oa
+        otherAttributes = otherAtts
         multiplier = m
         constant = c
     }
