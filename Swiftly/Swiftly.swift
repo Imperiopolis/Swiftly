@@ -142,7 +142,7 @@ public extension UIView {
                 let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? superview)
 
                 let constraint = NSLayoutConstraint(
-                    item: l.fromItem ?? self,
+                    item: self,
                     attribute: attr,
                     relatedBy: l.relatedBy ?? .Equal,
                     toItem: toItem,
@@ -219,7 +219,7 @@ public extension UILayoutGuide {
                 let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? owningView)
 
                 let constraint = NSLayoutConstraint(
-                    item: l.fromItem ?? self,
+                    item: self,
                     attribute: attr,
                     relatedBy: l.relatedBy ?? .Equal,
                     toItem: toItem,
@@ -263,7 +263,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Flush(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right, .Top, .Bottom], fromItem: item)
+        return Swiftly(attributes: [.Top, .Left, .Bottom, .Right], toItem: item)
     }
     /**
      A combined layout representing all sides of a view's margin alignment rectangle.
@@ -283,7 +283,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Horizontal(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right], fromItem: item)
+        return Swiftly(attributes: [.Left, .Right], toItem: item)
     }
     /**
      A combined layout representing the left and right sides of a view's margin alignment rectangle.
@@ -303,7 +303,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Vertical(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Top, .Bottom], fromItem: item)
+        return Swiftly(attributes: [.Top, .Bottom], toItem: item)
     }
     /**
      A combined layout representing the top and bottom sides of a view's margin alignment rectangle.
@@ -323,7 +323,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Center(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.CenterX, .CenterY], fromItem: item)
+        return Swiftly(attributes: [.CenterX, .CenterY], toItem: item)
     }
     /**
     A combined layout representing the height and width of a view's alignment rectangle.
@@ -333,7 +333,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Size(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Height, .Width], fromItem: item)
+        return Swiftly(attributes: [.Height, .Width], toItem: item)
     }
     /**
     A layout representing the left side of a view's alignment rectangle.
@@ -343,7 +343,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Left(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Left, fromItem: item)
+        return Swiftly(.Left, toItem: item)
     }
     /**
     A layout representing the right side of a view's alignment rectangle.
@@ -353,7 +353,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Right(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Right, fromItem: item)
+        return Swiftly(.Right, toItem: item)
     }
     /**
     A layout representing the top side of a view's alignment rectangle.
@@ -363,7 +363,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Top(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Top, fromItem: item)
+        return Swiftly(.Top, toItem: item)
     }
     /**
     A layout representing the bottom side of a view's alignment rectangle.
@@ -373,7 +373,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Bottom(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Bottom, fromItem: item)
+        return Swiftly(.Bottom, toItem: item)
     }
     /**
     A layout representing the leading edge of a view's alignment rectangle.
@@ -383,7 +383,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Leading(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Leading, fromItem: item)
+        return Swiftly(.Leading, toItem: item)
     }
     /**
     A layout representing the trailing edge of a view's alignment rectangle.
@@ -393,7 +393,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Trailing(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Trailing, fromItem: item)
+        return Swiftly(.Trailing, toItem: item)
     }
     /**
     A layout representing the height of a view's alignment rectangle.
@@ -403,7 +403,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Height(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Height, fromItem: item)
+        return Swiftly(.Height, toItem: item)
     }
     /**
     A layout representing the width of a view's alignment rectangle.
@@ -413,7 +413,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Width(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Width, fromItem: item)
+        return Swiftly(.Width, toItem: item)
     }
     /**
     A layout representing the center along the x-axis of a view's alignment rectangle.
@@ -423,7 +423,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func CenterX(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterX, fromItem: item)
+        return Swiftly(.CenterX, toItem: item)
     }
     /**
     A layout representing the center along the y-axis of a view's alignment rectangle.
@@ -433,7 +433,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func CenterY(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterY, fromItem: item)
+        return Swiftly(.CenterY, toItem: item)
     }
     /**
     A layout representing the baseline of a view.
@@ -443,7 +443,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Baseline(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Baseline, fromItem: item)
+        return Swiftly(.Baseline, toItem: item)
     }
 
     /**
@@ -455,7 +455,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func FirstBaseline(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.FirstBaseline, fromItem: item)
+        return Swiftly(.FirstBaseline, toItem: item)
     }
 
     /**
@@ -467,7 +467,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func LeftMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.LeftMargin, fromItem: item)
+        return Swiftly(.LeftMargin, toItem: item)
     }
     /**
     A layout representing the right margin of a view.
@@ -478,7 +478,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func RightMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.RightMargin, fromItem: item)
+        return Swiftly(.RightMargin, toItem: item)
     }
     /**
     A layout representing the top margin of a view.
@@ -489,7 +489,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func TopMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.TopMargin, fromItem: item)
+        return Swiftly(.TopMargin, toItem: item)
     }
     /**
     A layout representing the bottom margin of a view.
@@ -500,7 +500,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func BottomMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.BottomMargin, fromItem: item)
+        return Swiftly(.BottomMargin, toItem: item)
     }
     /**
     A layout representing the leading margin of a view.
@@ -511,7 +511,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func LeadingMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.LeadingMargin, fromItem: item)
+        return Swiftly(.LeadingMargin, toItem: item)
     }
     /**
     A layout representing the trailing margin of a view.
@@ -522,7 +522,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func TrailingMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.TrailingMargin, fromItem: item)
+        return Swiftly(.TrailingMargin, toItem: item)
     }
     /**
     A layout representing the center along the x-axis between the left and right margins of a view.
@@ -533,7 +533,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func CenterXWithinMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterXWithinMargins, fromItem: item)
+        return Swiftly(.CenterXWithinMargins, toItem: item)
     }
     /**
     A layout representing the center along the y-axis between the top and bottom margins of a view.
@@ -544,12 +544,11 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func CenterYWithinMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterYWithinMargins, fromItem: item)
+        return Swiftly(.CenterYWithinMargins, toItem: item)
     }
 
     private let attribute: NSLayoutAttribute?
     private let attributes: [NSLayoutAttribute]?
-    private var fromItem: AnyObject?
     private var relatedBy: NSLayoutRelation?
     private var otherAttribute: NSLayoutAttribute?
     private var otherAttributes: [NSLayoutAttribute]?
@@ -558,11 +557,10 @@ public struct Swiftly {
     private var toItem: AnyObject?
     private var priority: UILayoutPriority?
 
-    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, otherAttributes otherAtts: [NSLayoutAttribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
+    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, otherAttributes otherAtts: [NSLayoutAttribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
         attributes = atts
         relatedBy = r
-        fromItem = fi
         toItem = ti
         otherAttribute = oa
         otherAttributes = otherAtts
@@ -610,7 +608,7 @@ Assign a layout property equal to another property. Useful for things such as se
 */
 public func ==(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
@@ -638,7 +636,7 @@ Assign a layout property greater than or equal to another property. Useful for t
 */
 public func >=(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
@@ -683,7 +681,7 @@ Assign a layout property less than or equal to another property. Useful for thin
 */
 public func <=(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
