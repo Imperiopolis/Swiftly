@@ -34,7 +34,7 @@ public extension Array where Element : UIView {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
-    func applyLayoutWithPreviousView(callback: (previousView: UIView) -> ([Swiftly])) -> [NSLayoutConstraint] {
+    func applyLayoutWithPreviousView(@noescape callback: (previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
@@ -58,9 +58,42 @@ public extension Array where Element : UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
     }
 
+}
+
+@available(iOS, introduced=9.0)
+public extension Array where Element : UILayoutGuide {
+
+    /**
+     Apply an array of Swiftly objects to an array of layout guides. This is appended to any existing constraints.
+
+     - parameter layoutArray: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+
+        for view in self {
+            constraints += view.applyLayout(layoutArray: layoutArray)
+        }
+
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to an array of layout guides. This is appended to any existing constraints.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
+        return applyLayout(layoutArray: layout)
+    }
+    
 }
 
 public extension UIView {
@@ -73,11 +106,11 @@ public extension UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
-        if self.superview == nil {
+        guard let superview = superview else {
             fatalError("You must assign a superview before applying a layout")
         }
 
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
 
         var constraints = [NSLayoutConstraint]()
 
@@ -106,10 +139,10 @@ public extension UIView {
 
             for (attr, otherAttr) in zip(attributes, otherAttributes) {
                 // toItem should be nil when setting a fixed size
-                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? self.superview!)
+                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? superview)
 
                 let constraint = NSLayoutConstraint(
-                    item: l.fromItem ?? self,
+                    item: self,
                     attribute: attr,
                     relatedBy: l.relatedBy ?? .Equal,
                     toItem: toItem,
@@ -125,7 +158,7 @@ public extension UIView {
             }
         }
 
-        self.superview!.addConstraints(constraints)
+        superview.addConstraints(constraints)
         return constraints
     }
 
@@ -137,7 +170,84 @@ public extension UIView {
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
     func applyLayout(layout: Swiftly...) -> [NSLayoutConstraint] {
-        return self.applyLayout(layoutArray: layout)
+        return applyLayout(layoutArray: layout)
+    }
+}
+
+@available(iOS, introduced=9.0)
+public extension UILayoutGuide {
+
+    /**
+     Apply an array of Swiftly objects to a layout guide. This is appended to any existing constraints.
+
+     - parameter layoutArray: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    internal func applyLayout(layoutArray layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        guard let owningView = owningView else {
+            fatalError("You must add this layout guide to a view before applying a layout")
+        }
+
+        var constraints = [NSLayoutConstraint]()
+
+        for l in layoutArray {
+            let attributes: [NSLayoutAttribute]
+            if let attrs = l.attributes {
+                attributes = attrs
+            } else if let attr = l.attribute {
+                attributes = [attr]
+            } else {
+                fatalError("You must define an attribute.")
+            }
+
+            let otherAttributes: [NSLayoutAttribute]
+            if let otherAttrs = l.otherAttributes {
+                otherAttributes = otherAttrs
+            } else if let otherAttr = l.otherAttribute {
+                otherAttributes = [otherAttr]
+            } else if let attr = l.attribute {
+                otherAttributes = [attr]
+            } else if let attrs = l.attributes {
+                otherAttributes = attrs
+            } else {
+                otherAttributes = []
+            }
+
+            for (attr, otherAttr) in zip(attributes, otherAttributes) {
+                // toItem should be nil when setting a fixed size
+                let toItem = otherAttr == .NotAnAttribute ? nil : (l.toItem ?? owningView)
+
+                let constraint = NSLayoutConstraint(
+                    item: self,
+                    attribute: attr,
+                    relatedBy: l.relatedBy ?? .Equal,
+                    toItem: toItem,
+                    attribute: otherAttr,
+                    multiplier: l.multiplier,
+                    constant: l.constant)
+
+                if let priority = l.priority {
+                    constraint.priority = priority
+                }
+
+                constraints.append(constraint)
+            }
+        }
+
+        owningView.addConstraints(constraints)
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to a view. This is appended to any existing constraints.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func applyLayout(layout: Swiftly ...) -> [NSLayoutConstraint] {
+        return applyLayout(layoutArray: layout)
     }
 }
 
@@ -153,7 +263,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Flush(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right, .Top, .Bottom], fromItem: item)
+        return Swiftly(attributes: [.Top, .Left, .Bottom, .Right], toItem: item)
     }
     /**
      A combined layout representing all sides of a view's margin alignment rectangle.
@@ -162,8 +272,8 @@ public struct Swiftly {
 
      - returns: A Swiftly object representing the desired layout.
      */
-    public static func FlushMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.LeftMargin, .RightMargin, .TopMargin, .BottomMargin], fromItem: item)
+    public static func FlushToMargins(item: AnyObject? = nil) -> Swiftly {
+        return Swiftly(attributes: [.Top, .Left, .Bottom, .Right], otherAttributes: [.TopMargin, .LeftMargin, .BottomMargin, .RightMargin], toItem: item)
     }
     /**
     A combined layout representing the left and right sides of a view's alignment rectangle.
@@ -173,7 +283,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Horizontal(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Left, .Right], fromItem: item)
+        return Swiftly(attributes: [.Left, .Right], toItem: item)
     }
     /**
      A combined layout representing the left and right sides of a view's margin alignment rectangle.
@@ -183,7 +293,7 @@ public struct Swiftly {
      - returns: A Swiftly object representing the desired layout.
      */
     public static func HorizontalMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.LeftMargin, .RightMargin], fromItem: item)
+        return Swiftly(attributes: [.Left, .Right], otherAttributes: [.LeftMargin, .RightMargin], toItem: item)
     }
     /**
     A combined layout representing the top and bottom sides of a view's alignment rectangle.
@@ -193,7 +303,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Vertical(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Top, .Bottom], fromItem: item)
+        return Swiftly(attributes: [.Top, .Bottom], toItem: item)
     }
     /**
      A combined layout representing the top and bottom sides of a view's margin alignment rectangle.
@@ -203,7 +313,7 @@ public struct Swiftly {
      - returns: A Swiftly object representing the desired layout.
      */
     public static func VerticalMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.TopMargin, .BottomMargin], fromItem: item)
+        return Swiftly(attributes: [.Top, .Bottom], otherAttributes: [.TopMargin, .BottomMargin], toItem: item)
     }
     /**
     A combined layout representing the center along the x-axis and y-axis of a view's alignment rectangle.
@@ -213,7 +323,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Center(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.CenterX, .CenterY], fromItem: item)
+        return Swiftly(attributes: [.CenterX, .CenterY], toItem: item)
     }
     /**
     A combined layout representing the height and width of a view's alignment rectangle.
@@ -223,7 +333,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Size(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(attributes: [.Height, .Width], fromItem: item)
+        return Swiftly(attributes: [.Height, .Width], toItem: item)
     }
     /**
     A layout representing the left side of a view's alignment rectangle.
@@ -233,7 +343,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Left(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Left, fromItem: item)
+        return Swiftly(.Left, toItem: item)
     }
     /**
     A layout representing the right side of a view's alignment rectangle.
@@ -243,7 +353,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Right(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Right, fromItem: item)
+        return Swiftly(.Right, toItem: item)
     }
     /**
     A layout representing the top side of a view's alignment rectangle.
@@ -253,7 +363,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Top(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Top, fromItem: item)
+        return Swiftly(.Top, toItem: item)
     }
     /**
     A layout representing the bottom side of a view's alignment rectangle.
@@ -263,7 +373,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Bottom(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Bottom, fromItem: item)
+        return Swiftly(.Bottom, toItem: item)
     }
     /**
     A layout representing the leading edge of a view's alignment rectangle.
@@ -273,7 +383,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Leading(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Leading, fromItem: item)
+        return Swiftly(.Leading, toItem: item)
     }
     /**
     A layout representing the trailing edge of a view's alignment rectangle.
@@ -283,7 +393,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Trailing(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Trailing, fromItem: item)
+        return Swiftly(.Trailing, toItem: item)
     }
     /**
     A layout representing the height of a view's alignment rectangle.
@@ -293,7 +403,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Height(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Height, fromItem: item)
+        return Swiftly(.Height, toItem: item)
     }
     /**
     A layout representing the width of a view's alignment rectangle.
@@ -303,7 +413,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Width(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Width, fromItem: item)
+        return Swiftly(.Width, toItem: item)
     }
     /**
     A layout representing the center along the x-axis of a view's alignment rectangle.
@@ -313,7 +423,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func CenterX(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterX, fromItem: item)
+        return Swiftly(.CenterX, toItem: item)
     }
     /**
     A layout representing the center along the y-axis of a view's alignment rectangle.
@@ -323,7 +433,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func CenterY(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterY, fromItem: item)
+        return Swiftly(.CenterY, toItem: item)
     }
     /**
     A layout representing the baseline of a view.
@@ -333,7 +443,7 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     public static func Baseline(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.Baseline, fromItem: item)
+        return Swiftly(.Baseline, toItem: item)
     }
 
     /**
@@ -345,7 +455,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func FirstBaseline(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.FirstBaseline, fromItem: item)
+        return Swiftly(.FirstBaseline, toItem: item)
     }
 
     /**
@@ -357,7 +467,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func LeftMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.LeftMargin, fromItem: item)
+        return Swiftly(.LeftMargin, toItem: item)
     }
     /**
     A layout representing the right margin of a view.
@@ -368,7 +478,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func RightMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.RightMargin, fromItem: item)
+        return Swiftly(.RightMargin, toItem: item)
     }
     /**
     A layout representing the top margin of a view.
@@ -379,7 +489,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func TopMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.TopMargin, fromItem: item)
+        return Swiftly(.TopMargin, toItem: item)
     }
     /**
     A layout representing the bottom margin of a view.
@@ -390,7 +500,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func BottomMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.BottomMargin, fromItem: item)
+        return Swiftly(.BottomMargin, toItem: item)
     }
     /**
     A layout representing the leading margin of a view.
@@ -401,7 +511,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func LeadingMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.LeadingMargin, fromItem: item)
+        return Swiftly(.LeadingMargin, toItem: item)
     }
     /**
     A layout representing the trailing margin of a view.
@@ -412,7 +522,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func TrailingMargin(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.TrailingMargin, fromItem: item)
+        return Swiftly(.TrailingMargin, toItem: item)
     }
     /**
     A layout representing the center along the x-axis between the left and right margins of a view.
@@ -423,7 +533,7 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func CenterXWithinMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterXWithinMargins, fromItem: item)
+        return Swiftly(.CenterXWithinMargins, toItem: item)
     }
     /**
     A layout representing the center along the y-axis between the top and bottom margins of a view.
@@ -434,12 +544,11 @@ public struct Swiftly {
     */
     @available(iOS, introduced=8.0)
     public static func CenterYWithinMargins(item: AnyObject? = nil) -> Swiftly {
-        return Swiftly(.CenterYWithinMargins, fromItem: item)
+        return Swiftly(.CenterYWithinMargins, toItem: item)
     }
 
     private let attribute: NSLayoutAttribute?
     private let attributes: [NSLayoutAttribute]?
-    private var fromItem: AnyObject?
     private var relatedBy: NSLayoutRelation?
     private var otherAttribute: NSLayoutAttribute?
     private var otherAttributes: [NSLayoutAttribute]?
@@ -448,13 +557,13 @@ public struct Swiftly {
     private var toItem: AnyObject?
     private var priority: UILayoutPriority?
 
-    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, fromItem fi: AnyObject? = nil, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
+    private init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .Equal, toItem ti: AnyObject? = nil, otherAttribute oa: NSLayoutAttribute? = nil, otherAttributes otherAtts: [NSLayoutAttribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
         attributes = atts
         relatedBy = r
-        fromItem = fi
         toItem = ti
         otherAttribute = oa
+        otherAttributes = otherAtts
         multiplier = m
         constant = c
     }
@@ -485,7 +594,13 @@ Assign a property of a view equal to a constant. Useful for things such as setti
 public func ==(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     return result
 }
 
@@ -499,7 +614,7 @@ Assign a layout property equal to another property. Useful for things such as se
 */
 public func ==(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
@@ -527,7 +642,7 @@ Assign a layout property greater than or equal to another property. Useful for t
 */
 public func >=(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
@@ -556,7 +671,13 @@ Assign a layout property greater than or equal to a constant.
 public func >=(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     result.relatedBy = .GreaterThanOrEqual
     result.multiplier = 1
     return result
@@ -572,7 +693,7 @@ Assign a layout property less than or equal to another property. Useful for thin
 */
 public func <=(left: Swiftly, right: Swiftly) -> Swiftly {
     var result = left
-    result.toItem = right.fromItem
+    result.toItem = right.toItem
 
     if let attrs = right.attributes {
         result.otherAttributes = attrs
@@ -601,7 +722,13 @@ Assign a layout property less than or equal to a constant.
 public func <=(left: Swiftly, right: CGFloat) -> Swiftly {
     var result = left
     result.constant = right
-    result.otherAttribute = .NotAnAttribute
+
+    if left.attribute != nil {
+        result.otherAttribute = .NotAnAttribute
+    } else if let attrsCount = left.attributes?.count {
+        result.otherAttributes = [NSLayoutAttribute](count: attrsCount, repeatedValue: .NotAnAttribute)
+    }
+
     result.relatedBy = .LessThanOrEqual
     result.multiplier = 1
     return result
