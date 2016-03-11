@@ -27,7 +27,7 @@ pod "Swiftly"
 
 ## Custom Operators
 
-Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, and `/` operators are available.
+Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, `~=`, and `/` operators are available.
 
 ```swift
 view.applyLayout(.CenterX(), .Top() + 20, .Width() * 0.5, .Height() == 200)
@@ -46,7 +46,7 @@ view.applyLayout(.CenterY() ~= UILayoutPriorityRequired)
 By default, layout types reference the views `superview`. To create a constraint relative to a sibling view pass that view as a paramter.
 
 ```swift
-view1.applyLayout(.Left() == .Right(view2) + 5, .Size() == .Size(view2))
+view1.applyLayout(.Left() == .Right(view2) + 5, .Size(view2))
 ```
 
 ## Constraint Manipulation
