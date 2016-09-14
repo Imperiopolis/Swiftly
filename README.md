@@ -10,10 +10,10 @@ Swiftly generate autolayout constraints.
 
 To run the example project, simply run `pod try swiftly`. Alternatively, you can clone the repo and run the project in the example directory.
 
-All `UIView`s and `UILayoutGuide`s respond to the `applyLayout` method which takes a variadic list of `Swiftly` objects. Convenience initializers are available which pair with all of Apple's `NSLayoutAttribute` types. Common combinatorial layout types `Flush`, `FlushToMargins`, `Vertical`, `Horizontal`, `Center`, and `Size` are also available.
+All `UIView`s and `UILayoutGuide`s respond to the `applyLayout` method which takes a variadic list of `Swiftly` objects. Convenience initializers are available which pair with all of Apple's `NSLayoutAttribute` types. Common combinatorial layout types `flush`, `flushToMargins`, `vertical`, `horizontal`, `center`, and `size` are also available.
 
 ```swift
-view.applyLayout(.CenterX(), .Vertical(), .Width() * 0.5)
+view.applyLayout(.centerX(), .vertical(), .width() * 0.5)
 ```
 
 ## Installation
@@ -25,12 +25,16 @@ it, simply add the following line to your Podfile:
 pod "Swiftly"
 ```
 
+### Swift Version
+
+Swiftly 0.2.0 and later require Swift 3.0. For older versions of Swift, please use the Swiftly 0.1.0 build.
+
 ## Custom Operators
 
 Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, `~=`, and `/` operators are available.
 
 ```swift
-view.applyLayout(.CenterX(), .Top() + 20, .Width() * 0.5, .Height() == 200)
+view.applyLayout(.centerX(), .top() + 20, .width() * 0.5, .height() == 200)
 ```
 
 ## Setting Priority
@@ -38,7 +42,7 @@ view.applyLayout(.CenterX(), .Top() + 20, .Width() * 0.5, .Height() == 200)
 The priority of `Swiftly` objects may be configured.
 
 ```swift
-view.applyLayout(.CenterY() ~= UILayoutPriorityRequired)
+view.applyLayout(.centerY() ~= UILayoutPriorityRequired)
 ```
 
 ## View Relationships
@@ -46,20 +50,20 @@ view.applyLayout(.CenterY() ~= UILayoutPriorityRequired)
 By default, layout types reference the views `superview`. To create a constraint relative to a sibling view pass that view as a paramter.
 
 ```swift
-view1.applyLayout(.Left() == .Right(view2) + 5, .Size(view2))
+view1.applyLayout(.left() == .right(view2) + 5, .size(view2))
 ```
 
 ## Constraint Manipulation
 
-The `applyLayout` method returns an array of the generated `NSLayoutConstraint` objects, which can be used to later to easily disable or modify the generated constraints.
+The `applyLayout` method returns an array of the generated `LayoutConstraint` objects, which can be used to later to easily disable or modify the generated constraints.
 
 ```swift
-let constraints = view.applyLayout(.Size() == 5, .Center())
-NSLayoutConstraint.deactivateConstraints(constraints)
+let constraints = view.applyLayout(.size() == 5, .center())
+NSLayoutConstraint.deactivate(constraints)
 
 ...
 
-NSLayoutConstraint.activateConstraints(constraints)
+NSLayoutConstraint.activate(constraints)
 
 ```
 
