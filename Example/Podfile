@@ -1,4 +1,6 @@
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Swiftly', :path => '../'
+target :Example do
+    pod 'Swiftly', :path => '../'
+end
