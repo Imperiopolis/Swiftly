@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Swiftly.svg?style=flat)](http://cocoadocs.org/docsets/Swiftly)
 [![Platform](https://img.shields.io/cocoapods/p/Swiftly.svg?style=flat)](http://cocoadocs.org/docsets/Swiftly)
 
-Swiftly generate autolayout constraints.
+Swiftly generate Auto Layout constraints.
 
 ## Usage
 
@@ -13,7 +13,7 @@ To run the example project, simply run `pod try swiftly`. Alternatively, you can
 All `UIView`s and `UILayoutGuide`s respond to the `applyLayout` method which takes a variadic list of `Swiftly` objects. Convenience initializers are available which pair with all of Apple's `NSLayoutAttribute` types. Common combinatorial layout types `flush`, `flushToMargins`, `vertical`, `horizontal`, `center`, and `size` are also available.
 
 ```swift
-view.applyLayout(.centerX(), .vertical(), .width() * 0.5)
+view.applyLayout(.centerX, .vertical, .width * 0.5)
 ```
 
 ## Installation
@@ -45,7 +45,7 @@ Swiftly 0.2.0 and later require Swift 3.0. For older versions of Swift, please u
 Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, `~=`, and `/` operators are available.
 
 ```swift
-view.applyLayout(.centerX(), .top() + 20, .width() * 0.5, .height() == 200)
+view.applyLayout(.centerX, .top + 20, .width * 0.5, .height == 200)
 ```
 
 ## Setting Priority
@@ -53,7 +53,7 @@ view.applyLayout(.centerX(), .top() + 20, .width() * 0.5, .height() == 200)
 The priority of `Swiftly` objects may be configured.
 
 ```swift
-view.applyLayout(.centerY() ~= UILayoutPriorityRequired)
+view.applyLayout(.centerY ~= UILayoutPriorityRequired)
 ```
 
 ## View Relationships
@@ -61,7 +61,7 @@ view.applyLayout(.centerY() ~= UILayoutPriorityRequired)
 By default, layout types reference the views `superview`. To create a constraint relative to a sibling view pass that view as a paramter.
 
 ```swift
-view1.applyLayout(.left() == .right(view2) + 5, .size(view2))
+view1.applyLayout(.left == .right(view2) + 5, .size(view2))
 ```
 
 ## Constraint Manipulation
@@ -69,7 +69,7 @@ view1.applyLayout(.left() == .right(view2) + 5, .size(view2))
 The `applyLayout` method returns an array of the generated `LayoutConstraint` objects, which can be used to later to easily disable or modify the generated constraints.
 
 ```swift
-let constraints = view.applyLayout(.size() == 5, .center())
+let constraints = view.applyLayout(.size == 5, .center)
 NSLayoutConstraint.deactivate(constraints)
 
 ...

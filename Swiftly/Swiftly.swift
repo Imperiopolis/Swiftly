@@ -171,9 +171,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func flush(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func flush(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.top, .left, .bottom, .right], toItem: item)
     }
+
+    /// A combined layout representing all sides of a `Swiftlyable`'s alignment rectangle.
+    public static var flush: Swiftly {
+        return Swiftly(attributes: [.top, .left, .bottom, .right])
+    }
+
     /**
      A combined layout representing all sides of a `Swiftlyable`'s margin alignment rectangle.
 
@@ -181,9 +187,15 @@ public struct Swiftly {
 
      - returns: A Swiftly object representing the desired layout.
      */
-    public static func flushToMargins(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func flushToMargins(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.top, .left, .bottom, .right], toItem: item, otherAttributes: [.topMargin, .leftMargin, .bottomMargin, .rightMargin])
     }
+
+    /// A combined layout representing all sides of a `Swiftlyable`'s margin alignment rectangle.
+    public static var flushToMargins: Swiftly {
+        return Swiftly(attributes: [.top, .left, .bottom, .right], otherAttributes: [.topMargin, .leftMargin, .bottomMargin, .rightMargin])
+    }
+
     /**
     A combined layout representing the left and right sides of a `Swiftlyable`'s alignment rectangle.
 
@@ -191,9 +203,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func horizontal(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func horizontal(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.left, .right], toItem: item)
     }
+
+    /// A combined layout representing the left and right sides of a `Swiftlyable`'s alignment rectangle.
+    public static var horizontal: Swiftly {
+        return Swiftly(attributes: [.left, .right])
+    }
+
     /**
      A combined layout representing the left and right sides of a `Swiftlyable`'s margin alignment rectangle.
 
@@ -201,9 +219,15 @@ public struct Swiftly {
 
      - returns: A Swiftly object representing the desired layout.
      */
-    public static func horizontalMargins(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func horizontalMargins(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.left, .right], toItem: item, otherAttributes: [.leftMargin, .rightMargin])
     }
+
+    /// A combined layout representing the left and right sides of a `Swiftlyable`'s margin alignment rectangle.
+    public static var horizontalMargins: Swiftly {
+        return Swiftly(attributes: [.left, .right], otherAttributes: [.leftMargin, .rightMargin])
+    }
+
     /**
     A combined layout representing the top and bottom sides of a `Swiftlyable`'s alignment rectangle.
 
@@ -211,9 +235,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func vertical(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func vertical(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.top, .bottom], toItem: item)
     }
+
+    /// A combined layout representing the top and bottom sides of a `Swiftlyable`'s alignment rectangle.
+    public static var vertical: Swiftly {
+        return Swiftly(attributes: [.top, .bottom])
+    }
+
     /**
      A combined layout representing the top and bottom sides of a `Swiftlyable`'s margin alignment rectangle.
 
@@ -221,9 +251,15 @@ public struct Swiftly {
 
      - returns: A Swiftly object representing the desired layout.
      */
-    public static func verticalMargins(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func verticalMargins(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.top, .bottom], toItem: item, otherAttributes: [.topMargin, .bottomMargin])
     }
+
+    /// A combined layout representing the top and bottom sides of a `Swiftlyable`'s margin alignment rectangle.
+    public static var verticalMargins: Swiftly {
+        return Swiftly(attributes: [.top, .bottom], otherAttributes: [.topMargin, .bottomMargin])
+    }
+
     /**
     A combined layout representing the center along the x-axis and y-axis of a `Swiftlyable`'s alignment rectangle.
 
@@ -231,9 +267,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func center(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func center(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.centerX, .centerY], toItem: item)
     }
+
+    /// A combined layout representing the center along the x-axis and y-axis of a `Swiftlyable`'s alignment rectangle.
+    public static var center: Swiftly {
+        return Swiftly(attributes: [.centerX, .centerY])
+    }
+
     /**
     A combined layout representing the height and width of a `Swiftlyable`'s alignment rectangle.
 
@@ -241,9 +283,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func size(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func size(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(attributes: [.height, .width], toItem: item)
     }
+
+    /// A combined layout representing the height and width of a `Swiftlyable`'s alignment rectangle.
+    public static var size: Swiftly {
+        return Swiftly(attributes: [.height, .width])
+    }
+
     /**
     A layout representing the left side of a `Swiftlyable`'s alignment rectangle.
 
@@ -251,9 +299,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func left(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func left(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.left, toItem: item)
     }
+
+    /// A layout representing the left side of a `Swiftlyable`'s alignment rectangle.
+    public static var left: Swiftly {
+        return Swiftly(.left)
+    }
+
     /**
     A layout representing the right side of a `Swiftlyable`'s alignment rectangle.
 
@@ -261,9 +315,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func right(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func right(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.right, toItem: item)
     }
+
+    /// A layout representing the right side of a `Swiftlyable`'s alignment rectangle.
+    public static var right: Swiftly {
+        return Swiftly(.right)
+    }
+
     /**
     A layout representing the top side of a `Swiftlyable`'s alignment rectangle.
 
@@ -271,9 +331,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func top(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func top(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.top, toItem: item)
     }
+
+    /// A layout representing the top side of a `Swiftlyable`'s alignment rectangle.
+    public static var top: Swiftly {
+        return Swiftly(.top)
+    }
+
     /**
     A layout representing the bottom side of a `Swiftlyable`'s alignment rectangle.
 
@@ -281,9 +347,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func bottom(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func bottom(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.bottom, toItem: item)
     }
+
+    /// A layout representing the bottom side of a `Swiftlyable`'s alignment rectangle.
+    public static var bottom: Swiftly {
+        return Swiftly(.bottom)
+    }
+
     /**
     A layout representing the leading edge of a `Swiftlyable`'s alignment rectangle.
 
@@ -291,9 +363,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func leading(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func leading(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.leading, toItem: item)
     }
+
+    /// A layout representing the leading edge of a `Swiftlyable`'s alignment rectangle.
+    public static var leading: Swiftly {
+        return Swiftly(.leading)
+    }
+
     /**
     A layout representing the trailing edge of a `Swiftlyable`'s alignment rectangle.
 
@@ -301,9 +379,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func trailing(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func trailing(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.trailing, toItem: item)
     }
+
+    /// A layout representing the trailing edge of a `Swiftlyable`'s alignment rectangle.
+    public static var trailing: Swiftly {
+        return Swiftly(.trailing)
+    }
+
     /**
     A layout representing the height of a `Swiftlyable`'s alignment rectangle.
 
@@ -311,9 +395,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func height(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func height(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.height, toItem: item)
     }
+
+    /// A layout representing the height of a `Swiftlyable`'s alignment rectangle.
+    public static var height: Swiftly {
+        return Swiftly(.height)
+    }
+
     /**
     A layout representing the width of a `Swiftlyable`'s alignment rectangle.
 
@@ -321,9 +411,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func width(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func width(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.width, toItem: item)
     }
+
+    /// A layout representing the width of a `Swiftlyable`'s alignment rectangle.
+    public static var width: Swiftly {
+        return Swiftly(.width)
+    }
+
     /**
     A layout representing the center along the x-axis of a `Swiftlyable`'s alignment rectangle.
 
@@ -331,9 +427,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func centerX(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func centerX(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.centerX, toItem: item)
     }
+
+    /// A layout representing the center along the x-axis of a `Swiftlyable`'s alignment rectangle.
+    public static var centerX: Swiftly {
+        return Swiftly(.centerX)
+    }
+
     /**
     A layout representing the center along the y-axis of a `Swiftlyable`'s alignment rectangle.
 
@@ -341,9 +443,15 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func centerY(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func centerY(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.centerY, toItem: item)
     }
+
+    /// A layout representing the center along the y-axis of a `Swiftlyable`'s alignment rectangle.
+    public static var centerY: Swiftly {
+        return Swiftly(.centerY)
+    }
+
     /**
     A layout representing the baseline of a `Swiftlyable`.
 
@@ -351,8 +459,13 @@ public struct Swiftly {
 
     - returns: A Swiftly object representing the desired layout.
     */
-    public static func baseline(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func baseline(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.lastBaseline, toItem: item)
+    }
+
+    /// A layout representing the baseline of a `Swiftlyable`.
+    public static var baseline: Swiftly {
+        return Swiftly(.lastBaseline)
     }
 
     /**
@@ -363,8 +476,14 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func firstBaseline(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func firstBaseline(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.firstBaseline, toItem: item)
+    }
+
+    /// A layout representing the top most baseline of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var firstBaseline: Swiftly {
+        return Swiftly(.firstBaseline)
     }
 
     /**
@@ -375,9 +494,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func leftMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func leftMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.leftMargin, toItem: item)
     }
+
+    /// A layout representing the left margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var leftMargin: Swiftly {
+        return Swiftly(.leftMargin)
+    }
+
     /**
     A layout representing the right margin of a `Swiftlyable`.
 
@@ -386,9 +512,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func rightMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func rightMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.rightMargin, toItem: item)
     }
+
+    /// A layout representing the right margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var rightMargin: Swiftly {
+        return Swiftly(.rightMargin)
+    }
+
     /**
     A layout representing the top margin of a `Swiftlyable`.
 
@@ -397,9 +530,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func topMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func topMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.topMargin, toItem: item)
     }
+
+    /// A layout representing the top margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var topMargin: Swiftly {
+        return Swiftly(.topMargin)
+    }
+
     /**
     A layout representing the bottom margin of a `Swiftlyable`.
 
@@ -408,9 +548,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func bottomMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func bottomMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.bottomMargin, toItem: item)
     }
+
+    /// A layout representing the bottom margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var bottomMargin: Swiftly {
+        return Swiftly(.bottomMargin)
+    }
+
     /**
     A layout representing the leading margin of a `Swiftlyable`.
 
@@ -419,9 +566,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func leadingMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func leadingMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.leadingMargin, toItem: item)
     }
+
+    /// A layout representing the leading margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var leadingMargin: Swiftly {
+        return Swiftly(.leadingMargin)
+    }
+
     /**
     A layout representing the trailing margin of a `Swiftlyable`.
 
@@ -430,9 +584,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func trailingMargin(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func trailingMargin(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.trailingMargin, toItem: item)
     }
+
+    /// A layout representing the trailing margin of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var trailingMargin: Swiftly {
+        return Swiftly(.trailingMargin)
+    }
+
     /**
     A layout representing the center along the x-axis between the left and right margins of a `Swiftlyable`.
 
@@ -441,9 +602,16 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func centerXWithinMargins(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func centerXWithinMargins(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.centerXWithinMargins, toItem: item)
     }
+
+    /// A layout representing the center along the x-axis between the left and right margins of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var centerXWithinMargins: Swiftly {
+        return Swiftly(.centerXWithinMargins)
+    }
+
     /**
     A layout representing the center along the y-axis between the top and bottom margins of a `Swiftlyable`.
 
@@ -452,8 +620,14 @@ public struct Swiftly {
     - returns: A Swiftly object representing the desired layout.
     */
     @available(iOS, introduced: 8.0)
-    public static func centerYWithinMargins(_ item: Swiftlyable? = nil) -> Swiftly {
+    public static func centerYWithinMargins(_ item: Swiftlyable) -> Swiftly {
         return Swiftly(.centerYWithinMargins, toItem: item)
+    }
+
+    /// A layout representing the center along the y-axis between the top and bottom margins of a `Swiftlyable`.
+    @available(iOS, introduced: 8.0)
+    public static var centerYWithinMargins: Swiftly {
+        return Swiftly(.centerYWithinMargins)
     }
 
     let attribute: NSLayoutAttribute?
