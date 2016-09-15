@@ -42,7 +42,7 @@ Swiftly 0.2.0 and later require Swift 3.0. For older versions of Swift, please u
 
 ## Custom Operators
 
-Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, `~==`, and `/` operators are available.
+Operators can be used on `Swiftly` objects to produce modified layouts. The `==`, `<=`, `>=`, `+`, `-`, `*`, `~=`, and `/` operators are available.
 
 ```swift
 view.applyLayout(.centerX(), .top() + 20, .width() * 0.5, .height() == 200)
@@ -53,7 +53,7 @@ view.applyLayout(.centerX(), .top() + 20, .width() * 0.5, .height() == 200)
 The priority of `Swiftly` objects may be configured.
 
 ```swift
-view.applyLayout(.centerY() ~== UILayoutPriorityRequired)
+view.applyLayout(.centerY() ~= UILayoutPriorityRequired)
 ```
 
 ## View Relationships
