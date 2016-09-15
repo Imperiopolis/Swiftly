@@ -18,11 +18,22 @@ view.applyLayout(.centerX(), .vertical(), .width() * 0.5)
 
 ## Installation
 
-Swiftly is available through [CocoaPods](http://cocoapods.org). To install
+### Cocoapods
+
+Swiftly is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "Swiftly"
+```
+
+### Carthage
+
+Swiftly is available through [Carthage](Swiftly/Swiftly.swift). To install
+it, simply add the following line to your Cartfile:
+
+```
+github "Imperiopolis/Swiftly" ~> 1.0
 ```
 
 ### Swift Version
