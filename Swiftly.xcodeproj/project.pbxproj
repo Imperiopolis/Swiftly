@@ -7,203 +7,121 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D4C156C1B39BF1700126184 /* Swiftly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4C15601B39BF1700126184 /* Swiftly.framework */; };
-		2D889FDD1B3A0A9D0057D3E4 /* Swiftly.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D889FDB1B3A0A9D0057D3E4 /* Swiftly.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D889FDE1B3A0A9D0057D3E4 /* Swiftly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D889FDC1B3A0A9D0057D3E4 /* Swiftly.swift */; };
-		2D889FE51B3A0ACB0057D3E4 /* SwiftlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D889FE11B3A0AAD0057D3E4 /* SwiftlyTests.swift */; };
+		1E23B0251D8A39A800D2632D /* Swiftly.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E23B0231D8A39A800D2632D /* Swiftly.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EBD90501D8A39D400BC83ED /* Swiftly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD904F1D8A39D400BC83ED /* Swiftly.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2D4C156D1B39BF1700126184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D4C15571B39BF1700126184 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D4C155F1B39BF1700126184;
-			remoteInfo = SwiftLayout;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2D4C15601B39BF1700126184 /* Swiftly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D4C156B1B39BF1700126184 /* SwiftlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D889FDB1B3A0A9D0057D3E4 /* Swiftly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Swiftly.h; path = Swiftly/Swiftly.h; sourceTree = SOURCE_ROOT; };
-		2D889FDC1B3A0A9D0057D3E4 /* Swiftly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swiftly.swift; path = Swiftly/Swiftly.swift; sourceTree = SOURCE_ROOT; };
-		2D889FDF1B3A0AA40057D3E4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Swiftly/Info.plist; sourceTree = SOURCE_ROOT; };
-		2D889FE11B3A0AAD0057D3E4 /* SwiftlyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftlyTests.swift; path = SwiftlyTests/SwiftlyTests.swift; sourceTree = SOURCE_ROOT; };
-		2D889FE31B3A0AB20057D3E4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftlyTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		1E23B0201D8A39A800D2632D /* Swiftly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swiftly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E23B0231D8A39A800D2632D /* Swiftly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiftly.h; sourceTree = "<group>"; };
+		1E23B0241D8A39A800D2632D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EBD904F1D8A39D400BC83ED /* Swiftly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D4C155C1B39BF1700126184 /* Frameworks */ = {
+		1E23B01C1D8A39A800D2632D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D4C15681B39BF1700126184 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D4C156C1B39BF1700126184 /* Swiftly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D4C15561B39BF1700126184 = {
+		1E23B0161D8A39A800D2632D = {
 			isa = PBXGroup;
 			children = (
-				2D4C15621B39BF1700126184 /* Swiftly */,
-				2D4C156F1B39BF1700126184 /* SwiftlyTests */,
-				2D4C15611B39BF1700126184 /* Products */,
+				1E23B0221D8A39A800D2632D /* Swiftly */,
+				1E23B0211D8A39A800D2632D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2D4C15611B39BF1700126184 /* Products */ = {
+		1E23B0211D8A39A800D2632D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D4C15601B39BF1700126184 /* Swiftly.framework */,
-				2D4C156B1B39BF1700126184 /* SwiftlyTests.xctest */,
+				1E23B0201D8A39A800D2632D /* Swiftly.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2D4C15621B39BF1700126184 /* Swiftly */ = {
+		1E23B0221D8A39A800D2632D /* Swiftly */ = {
 			isa = PBXGroup;
 			children = (
-				2D889FDB1B3A0A9D0057D3E4 /* Swiftly.h */,
-				2D889FDC1B3A0A9D0057D3E4 /* Swiftly.swift */,
-				2D4C15631B39BF1700126184 /* Supporting Files */,
+				1E23B0231D8A39A800D2632D /* Swiftly.h */,
+				1EBD904F1D8A39D400BC83ED /* Swiftly.swift */,
+				1E23B0241D8A39A800D2632D /* Info.plist */,
 			);
-			name = Swiftly;
-			path = SwiftLayout;
-			sourceTree = "<group>";
-		};
-		2D4C15631B39BF1700126184 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2D889FDF1B3A0AA40057D3E4 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2D4C156F1B39BF1700126184 /* SwiftlyTests */ = {
-			isa = PBXGroup;
-			children = (
-				2D889FE11B3A0AAD0057D3E4 /* SwiftlyTests.swift */,
-				2D4C15701B39BF1700126184 /* Supporting Files */,
-			);
-			name = SwiftlyTests;
-			path = SwiftLayoutTests;
-			sourceTree = "<group>";
-		};
-		2D4C15701B39BF1700126184 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2D889FE31B3A0AB20057D3E4 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = Swiftly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2D4C155D1B39BF1700126184 /* Headers */ = {
+		1E23B01D1D8A39A800D2632D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D889FDD1B3A0A9D0057D3E4 /* Swiftly.h in Headers */,
+				1E23B0251D8A39A800D2632D /* Swiftly.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2D4C155F1B39BF1700126184 /* Swiftly */ = {
+		1E23B01F1D8A39A800D2632D /* Swiftly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D4C15761B39BF1700126184 /* Build configuration list for PBXNativeTarget "Swiftly" */;
+			buildConfigurationList = 1E23B0281D8A39A800D2632D /* Build configuration list for PBXNativeTarget "Swiftly" */;
 			buildPhases = (
-				2D4C155B1B39BF1700126184 /* Sources */,
-				2D4C155C1B39BF1700126184 /* Frameworks */,
-				2D4C155D1B39BF1700126184 /* Headers */,
-				2D4C155E1B39BF1700126184 /* Resources */,
+				1E23B01B1D8A39A800D2632D /* Sources */,
+				1E23B01C1D8A39A800D2632D /* Frameworks */,
+				1E23B01D1D8A39A800D2632D /* Headers */,
+				1E23B01E1D8A39A800D2632D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Swiftly;
-			productName = SwiftLayout;
-			productReference = 2D4C15601B39BF1700126184 /* Swiftly.framework */;
+			productName = Swiftly;
+			productReference = 1E23B0201D8A39A800D2632D /* Swiftly.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		2D4C156A1B39BF1700126184 /* SwiftlyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2D4C15791B39BF1700126184 /* Build configuration list for PBXNativeTarget "SwiftlyTests" */;
-			buildPhases = (
-				2D4C15671B39BF1700126184 /* Sources */,
-				2D4C15681B39BF1700126184 /* Frameworks */,
-				2D4C15691B39BF1700126184 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2D4C156E1B39BF1700126184 /* PBXTargetDependency */,
-			);
-			name = SwiftlyTests;
-			productName = SwiftLayoutTests;
-			productReference = 2D4C156B1B39BF1700126184 /* SwiftlyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2D4C15571B39BF1700126184 /* Project object */ = {
+		1E23B0171D8A39A800D2632D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Trapp Design";
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Swiftly;
 				TargetAttributes = {
-					2D4C155F1B39BF1700126184 = {
-						CreatedOnToolsVersion = 6.3.2;
-					};
-					2D4C156A1B39BF1700126184 = {
-						CreatedOnToolsVersion = 6.3.2;
+					1E23B01F1D8A39A800D2632D = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 2D4C155A1B39BF1700126184 /* Build configuration list for PBXProject "Swiftly" */;
+			buildConfigurationList = 1E23B01A1D8A39A800D2632D /* Build configuration list for PBXProject "Swiftly" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 2D4C15561B39BF1700126184;
-			productRefGroup = 2D4C15611B39BF1700126184 /* Products */;
+			mainGroup = 1E23B0161D8A39A800D2632D;
+			productRefGroup = 1E23B0211D8A39A800D2632D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D4C155F1B39BF1700126184 /* Swiftly */,
-				2D4C156A1B39BF1700126184 /* SwiftlyTests */,
+				1E23B01F1D8A39A800D2632D /* Swiftly */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2D4C155E1B39BF1700126184 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D4C15691B39BF1700126184 /* Resources */ = {
+		1E23B01E1D8A39A800D2632D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,37 +131,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2D4C155B1B39BF1700126184 /* Sources */ = {
+		1E23B01B1D8A39A800D2632D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D889FDE1B3A0A9D0057D3E4 /* Swiftly.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2D4C15671B39BF1700126184 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D889FE51B3A0ACB0057D3E4 /* SwiftlyTests.swift in Sources */,
+				1EBD90501D8A39D400BC83ED /* Swiftly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		2D4C156E1B39BF1700126184 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D4C155F1B39BF1700126184 /* Swiftly */;
-			targetProxy = 2D4C156D1B39BF1700126184 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		2D4C15741B39BF1700126184 /* Debug */ = {
+		1E23B0261D8A39A800D2632D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -251,16 +154,19 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -271,17 +177,17 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -289,10 +195,11 @@
 			};
 			name = Debug;
 		};
-		2D4C15751B39BF1700126184 /* Release */ = {
+		1E23B0271D8A39A800D2632D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -300,10 +207,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -320,9 +230,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -330,10 +241,11 @@
 			};
 			name = Release;
 		};
-		2D4C15771B39BF1700126184 /* Debug */ = {
+		1E23B0291D8A39A800D2632D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -341,17 +253,19 @@
 				INFOPLIST_FILE = Swiftly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trappdesign.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Swiftly;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trappdesign.Swiftly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		2D4C15781B39BF1700126184 /* Release */ = {
+		1E23B02A1D8A39A800D2632D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -359,75 +273,35 @@
 				INFOPLIST_FILE = Swiftly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trappdesign.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Swiftly;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trappdesign.Swiftly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		2D4C157A1B39BF1700126184 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Swiftly/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trappdesign.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SwiftlyTests;
-			};
-			name = Debug;
-		};
-		2D4C157B1B39BF1700126184 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Swiftly/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trappdesign.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SwiftlyTests;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D4C155A1B39BF1700126184 /* Build configuration list for PBXProject "Swiftly" */ = {
+		1E23B01A1D8A39A800D2632D /* Build configuration list for PBXProject "Swiftly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D4C15741B39BF1700126184 /* Debug */,
-				2D4C15751B39BF1700126184 /* Release */,
+				1E23B0261D8A39A800D2632D /* Debug */,
+				1E23B0271D8A39A800D2632D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D4C15761B39BF1700126184 /* Build configuration list for PBXNativeTarget "Swiftly" */ = {
+		1E23B0281D8A39A800D2632D /* Build configuration list for PBXNativeTarget "Swiftly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D4C15771B39BF1700126184 /* Debug */,
-				2D4C15781B39BF1700126184 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D4C15791B39BF1700126184 /* Build configuration list for PBXNativeTarget "SwiftlyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D4C157A1B39BF1700126184 /* Debug */,
-				2D4C157B1B39BF1700126184 /* Release */,
+				1E23B0291D8A39A800D2632D /* Debug */,
+				1E23B02A1D8A39A800D2632D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2D4C15571B39BF1700126184 /* Project object */;
+	rootObject = 1E23B0171D8A39A800D2632D /* Project object */;
 }

@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = "Swiftly"
   s.version          = "0.1.0"
-  s.summary          = "Swiftly generate autolayout constraints."
+  s.summary          = "Swiftly generate Auto Layout constraints."
   s.description      = <<-DESC
-Swiftly generate autolayout constraints and interact with them with all of Apple's built in functions.
+Swiftly generate Auto Layout constraints and interact with them with all of Apple's built in functions.
                     DESC
   s.homepage         = "https://github.com/imperiopolis/Swiftly"
   s.license          = 'MIT'

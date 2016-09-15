@@ -20,37 +20,36 @@ class ExampleViewController: UIViewController {
         // Create three views
         let view1 = UIView()
         view.addSubview(view1)
-        view1.backgroundColor = .blueColor()
+        view1.backgroundColor = .blue
         let view2 = UIView()
         view.addSubview(view2)
-        view2.backgroundColor = .whiteColor()
+        view2.backgroundColor = .white
         let view3 = UIView()
         view.addSubview(view3)
-        view3.backgroundColor = .purpleColor()
+        view3.backgroundColor = .purple
 
         // Create 3 column constraints, disabled for now
-        threeColumnConstraints += view1.applyLayout(.Vertical(), .Left() + 5, .Width() / 3 - 7.5)
-        threeColumnConstraints += view2.applyLayout(.Vertical(), .Left() == .Right(view1) + 7.5, .Width() / 3 - 7.5)
-        threeColumnConstraints += view3.applyLayout(.Vertical(), .Left() == .Right(view2) + 7.5, .Right() - 5)
+        threeColumnConstraints += view1.applyLayout(.vertical, .left + 5, .width / 3 - 7.5)
+        threeColumnConstraints += view2.applyLayout(.vertical, .left == .right(view1) + 7.5, .width / 3 - 7.5)
+        threeColumnConstraints += view3.applyLayout(.vertical, .left == .right(view2) + 7.5, .right - 5)
 
-        NSLayoutConstraint.deactivateConstraints(threeColumnConstraints)
+        NSLayoutConstraint.deactivate(threeColumnConstraints)
 
         // Layout two views in two vertical columns. Save the constraints for future modification.
-        twoColumnConstraints += view1.applyLayout(.Vertical(), .Left() + 5, .Width() / 2 - 7.5)
-        twoColumnConstraints += view2.applyLayout(.Vertical(), .Left() == .Right(view1) + 7.5, .Right() - 5)
+        twoColumnConstraints += view1.applyLayout(.vertical, .left + 5, .width / 2 - 7.5)
+        twoColumnConstraints += view2.applyLayout(.vertical, .left == .right(view1) + 7.5, .right - 5)
 
         // Third column off the right hand side
-        twoColumnConstraints += view3.applyLayout(.Vertical(), .Right())
+        twoColumnConstraints += view3.applyLayout(.vertical, .right)
 
         // Animate in the third column after 2 seconds
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-            Int64(2 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) { [unowned self] in
-            UIView.animateWithDuration(0.5) {
-                NSLayoutConstraint.deactivateConstraints(self.twoColumnConstraints)
-                NSLayoutConstraint.activateConstraints(self.threeColumnConstraints)
+        let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) { [unowned self] in
+            UIView.animate(withDuration: 0.5, animations: {
+                NSLayoutConstraint.deactivate(self.twoColumnConstraints)
+                NSLayoutConstraint.activate(self.threeColumnConstraints)
                 self.view.layoutIfNeeded()
-            }
+            }) 
         }
     }
 }
