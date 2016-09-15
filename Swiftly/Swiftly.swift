@@ -34,7 +34,7 @@ public extension Array where Element : UIView {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
-    func applyLayoutWithPreviousView(_ callback: @noescape (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
+    func applyLayoutWithPreviousView(_ callback: (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
@@ -90,6 +90,7 @@ public extension Array where Element : UILayoutGuide {
 
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
+    @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
@@ -169,6 +170,7 @@ public extension UIView {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
+    @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
@@ -246,6 +248,7 @@ public extension UILayoutGuide {
 
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
+    @discardableResult
     func applyLayout(_ layout: Swiftly ...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
@@ -790,9 +793,12 @@ public func /(left: Swiftly, right: CGFloat) -> Swiftly {
     return result
 }
 
-infix operator ~= {
-    precedence 0
+precedencegroup LayoutPriority {
+    associativity: left
+    lowerThan: ComparisonPrecedence
 }
+
+infix operator ~== : LayoutPriority
 
 /**
 Assign the priority of a property.
@@ -802,7 +808,7 @@ Assign the priority of a property.
 
  - returns: A Swiftly object representing the desired constraint
  */
-public func ~=(left: Swiftly, right: UILayoutPriority) -> Swiftly {
+public func ~==(left: Swiftly, right: UILayoutPriority) -> Swiftly {
     var s = left
     s.priority = right
     return s
