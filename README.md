@@ -32,7 +32,7 @@ pod "Swiftly"
 Swiftly is available through [Carthage](Swiftly/Swiftly.swift). To install
 it, simply add the following line to your Cartfile:
 
-```
+```ogdl
 github "Imperiopolis/Swiftly" ~> 1.0
 ```
 
