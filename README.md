@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/Swiftly.svg?style=flat)](http://cocoadocs.org/docsets/Swiftly)
 [![Platform](https://img.shields.io/cocoapods/p/Swiftly.svg?style=flat)](http://cocoadocs.org/docsets/Swiftly)
 
-Swiftly generate autolayout constraints.
+Swiftly generate Auto Layout constraints.
 
 ## Usage
 
