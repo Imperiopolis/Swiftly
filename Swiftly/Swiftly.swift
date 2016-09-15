@@ -34,7 +34,7 @@ public extension Array where Element : UIView {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
-    func applyLayoutWithPreviousView(_ callback: @noescape (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
+    func applyLayoutWithPreviousView(_ callback: (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
