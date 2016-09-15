@@ -38,7 +38,7 @@ github "Imperiopolis/Swiftly" ~> 1.0
 
 ### Swift Version
 
-Swiftly 0.2.0 and later require Swift 3.0. For older versions of Swift, please use the Swiftly 0.1.0 build.
+Swiftly 1.0 and later require Swift 3.0. For older versions of Swift, please use the Swiftly 0.1.0 build.
 
 ## Custom Operators
 
