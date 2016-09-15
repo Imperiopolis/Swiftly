@@ -90,6 +90,7 @@ public extension Array where Element : UILayoutGuide {
 
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
+    @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
@@ -169,6 +170,7 @@ public extension UIView {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
+    @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
@@ -246,6 +248,7 @@ public extension UILayoutGuide {
 
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
+    @discardableResult
     func applyLayout(_ layout: Swiftly ...) -> [NSLayoutConstraint] {
         return applyLayout(layoutArray: layout)
     }
