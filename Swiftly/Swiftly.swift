@@ -793,9 +793,12 @@ public func /(left: Swiftly, right: CGFloat) -> Swiftly {
     return result
 }
 
-infix operator ~= {
-    precedence 0
+precedencegroup LayoutPriority {
+    associativity: left
+    lowerThan: ComparisonPrecedence
 }
+
+infix operator ~== : LayoutPriority
 
 /**
 Assign the priority of a property.
@@ -805,7 +808,7 @@ Assign the priority of a property.
 
  - returns: A Swiftly object representing the desired constraint
  */
-public func ~=(left: Swiftly, right: UILayoutPriority) -> Swiftly {
+public func ~==(left: Swiftly, right: UILayoutPriority) -> Swiftly {
     var s = left
     s.priority = right
     return s
