@@ -28,13 +28,13 @@ extension UILayoutGuide: Swiftlyable {
 public extension Swiftlyable {
 
     /**
-     Apply an array of Swiftly objects to a `Swiftlyable`. This is appended to any existing constraints.
+     Create constraints from an array of Swiftly objects.
 
      - parameter layoutArray: The layout(s) to apply.
 
      - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
      */
-    internal func applyLayout(layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+    internal func createLayout(layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
         guard let superview = superview else {
             fatalError("You must assign a superview before applying a layout")
         }
@@ -86,8 +86,7 @@ public extension Swiftlyable {
                 return constraint
             }
         }
-
-        superview.addConstraints(constraints)
+        
         return constraints
     }
 
@@ -100,7 +99,20 @@ public extension Swiftlyable {
      */
     @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
-        return applyLayout(layoutArray: layout)
+        let constraints = createLayout(layoutArray: layout)
+        NSLayoutConstraint.activate(constraints)
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to a `Swiftlyable`. The constraints are not immediately applied.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func createLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
+        return createLayout(layoutArray: layout)
     }
 
 }
@@ -114,8 +126,8 @@ public extension Array where Element : Swiftlyable {
 
     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
     */
-    internal func applyLayout(layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
-        return flatMap { return $0.applyLayout(layoutArray: layoutArray) }
+    internal func createLayout(layoutArray: [Swiftly]) -> [NSLayoutConstraint] {
+        return flatMap { return $0.createLayout(layoutArray: layoutArray) }
     }
 
     /**
@@ -127,7 +139,20 @@ public extension Array where Element : Swiftlyable {
     */
     @discardableResult
     func applyLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
-        return applyLayout(layoutArray: layout)
+        let constraints = createLayout(layoutArray: layout)
+        NSLayoutConstraint.activate(constraints)
+        return constraints
+    }
+
+    /**
+     Apply a variadic list of Swiftly objects to an array of views. The constraints are not immediately applied.
+
+     - parameter layout: The layout(s) to apply.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func createLayout(_ layout: Swiftly...) -> [NSLayoutConstraint] {
+        return createLayout(layoutArray: layout)
     }
 
 }
@@ -143,13 +168,26 @@ public extension Array where Element : UIView {
      */
     @discardableResult
     func applyLayoutWithPreviousView(_ callback: (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
+        let constraints = createLayoutWithPreviousView(callback)
+        NSLayoutConstraint.activate(constraints)
+        return constraints
+    }
+
+    /**
+     Apply an array of Swiftly objects to an array of views. The constraints are not applied to the first view in the array (since it has no previous item). The constraints are not applied immediately.
+
+     - parameter callback: A closure used to define the constraints. A previousView argument is passed to allow for distributing views.
+
+     - returns: An array of constraints that represent the applied layout. This can be used to dynamically enable / disable a given layout.
+     */
+    func createLayoutWithPreviousView(_ callback: (_ previousView: UIView) -> [Swiftly]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
         for view in self {
             if let previousView = previousView {
                 let swiftly = callback(previousView)
-                constraints += (view as Swiftlyable).applyLayout(layoutArray: swiftly)
+                constraints += (view as Swiftlyable).createLayout(layoutArray: swiftly)
             }
 
             previousView = view
