@@ -44,7 +44,7 @@ public extension Swiftlyable {
         }
 
         let constraints = layoutArray.flatMap { l -> [NSLayoutConstraint] in
-            let attributes: [NSLayoutAttribute]
+            let attributes: [NSLayoutConstraint.Attribute]
             if let attrs = l.attributes {
                 attributes = attrs
             } else if let attr = l.attribute {
@@ -53,7 +53,7 @@ public extension Swiftlyable {
                 fatalError("You must define an attribute.")
             }
 
-            let otherAttributes: [NSLayoutAttribute]
+            let otherAttributes: [NSLayoutConstraint.Attribute]
             if let otherAttrs = l.otherAttributes {
                 otherAttributes = otherAttrs
             } else if let otherAttr = l.otherAttribute {
@@ -668,17 +668,17 @@ public struct Swiftly {
         return Swiftly(.centerYWithinMargins)
     }
 
-    let attribute: NSLayoutAttribute?
-    let attributes: [NSLayoutAttribute]?
-    var relatedBy: NSLayoutRelation?
-    var otherAttribute: NSLayoutAttribute?
-    var otherAttributes: [NSLayoutAttribute]?
+    let attribute: NSLayoutConstraint.Attribute?
+    let attributes: [NSLayoutConstraint.Attribute]?
+    var relatedBy: NSLayoutConstraint.Relation?
+    var otherAttribute: NSLayoutConstraint.Attribute?
+    var otherAttributes: [NSLayoutConstraint.Attribute]?
     var multiplier: CGFloat
     var constant: CGFloat
     var toItem: Swiftlyable?
     var priority: UILayoutPriority?
 
-    init(_ a: NSLayoutAttribute? = nil, attributes atts: [NSLayoutAttribute]? = nil, relatedBy r: NSLayoutRelation? = .equal, toItem ti: Swiftlyable? = nil, otherAttribute oa: NSLayoutAttribute? = nil, otherAttributes otherAtts: [NSLayoutAttribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
+    init(_ a: NSLayoutConstraint.Attribute? = nil, attributes atts: [NSLayoutConstraint.Attribute]? = nil, relatedBy r: NSLayoutConstraint.Relation? = .equal, toItem ti: Swiftlyable? = nil, otherAttribute oa: NSLayoutConstraint.Attribute? = nil, otherAttributes otherAtts: [NSLayoutConstraint.Attribute]? = nil, multiplier m: CGFloat = 1, constant c: CGFloat = 0) {
         attribute = a
         attributes = atts
         relatedBy = r
@@ -719,7 +719,7 @@ public func ==(left: Swiftly, right: CGFloat) -> Swiftly {
     if left.attribute != nil {
         result.otherAttribute = .notAnAttribute
     } else if let attrsCount = left.attributes?.count {
-        result.otherAttributes = [NSLayoutAttribute](repeating: .notAnAttribute, count: attrsCount)
+        result.otherAttributes = [NSLayoutConstraint.Attribute](repeating: .notAnAttribute, count: attrsCount)
     }
 
     return result
@@ -796,7 +796,7 @@ public func >=(left: Swiftly, right: CGFloat) -> Swiftly {
     if left.attribute != nil {
         result.otherAttribute = .notAnAttribute
     } else if let attrsCount = left.attributes?.count {
-        result.otherAttributes = [NSLayoutAttribute](repeating: .notAnAttribute, count: attrsCount)
+        result.otherAttributes = [NSLayoutConstraint.Attribute](repeating: .notAnAttribute, count: attrsCount)
     }
 
     result.relatedBy = .greaterThanOrEqual
@@ -847,7 +847,7 @@ public func <=(left: Swiftly, right: CGFloat) -> Swiftly {
     if left.attribute != nil {
         result.otherAttribute = .notAnAttribute
     } else if let attrsCount = left.attributes?.count {
-        result.otherAttributes = [NSLayoutAttribute](repeating: .notAnAttribute, count: attrsCount)
+        result.otherAttributes = [NSLayoutConstraint.Attribute](repeating: .notAnAttribute, count: attrsCount)
     }
 
     result.relatedBy = .lessThanOrEqual

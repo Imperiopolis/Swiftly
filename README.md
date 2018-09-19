@@ -33,12 +33,12 @@ Swiftly is available through [Carthage](Swiftly/Swiftly.swift). To install
 it, simply add the following line to your Cartfile:
 
 ```ogdl
-github "Imperiopolis/Swiftly" ~> 1.0
+github "Imperiopolis/Swiftly" ~> 2.0
 ```
 
 ### Swift Version
 
-Swiftly 1.0 and later require Swift 3.0. For older versions of Swift, please use the Swiftly 0.1.0 build.
+Swiftly 2.0 and later require Swift 4.2. For older versions of Swift, please use the Swiftly 1.0 build.
 
 ## Custom Operators
 
@@ -82,7 +82,7 @@ __Note:__ Any view which has `applyLayout` called on it will automatically set `
 
 ## Documentation
 
-Read the documentation [here](http://cocoadocs.org/docsets/Grapher).
+Read the documentation [here](http://cocoadocs.org/docsets/Swiftly).
 
 ## About Swiftly
 
